@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Villa POS</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="manifest" href="manifest.json">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link rel="apple-touch-icon" href="icon-192x192.png">
+</head>
+<body>
+    <div class="container">
+        <!-- Villa Selection Screen -->
+        <div id="villaScreen" class="screen active">
+            <div class="header">Select Villa</div>
+            <div class="villa-card" data-villa="little-castle">
+                <i class="fas fa-chess-rook"></i>
+                <div>The Little Castle</div>
+            </div>
+            <div class="villa-card" data-villa="amazing-villa">
+                <i class="fas fa-home"></i>
+                <div>Amazing Villa</div>
+            </div>
+            <div class="villa-card" data-villa="oh-yeah-villa">
+                <i class="fas fa-umbrella-beach"></i>
+                <div>Oh Yeah Villa</div>
+            </div>
+        </div>
+
+        <!-- Order Screen -->
+        <div id="orderScreen" class="screen">
+            <div class="back-button" id="backToVilla">
+                <i class="fas fa-chevron-left"></i>
+            </div>
+            <div class="header">New Order</div>
+            
+            <div class="tab-bar">
+                <div class="tab active" data-category="drinks">Drinks</div>
+                <div class="tab" data-category="services">Services</div>
+            </div>
+            
+            <div class="search-bar">
+                <input type="text" id="searchItems" placeholder="Search items...">
+                <i class="fas fa-search"></i>
+            </div>
+
+            <div id="drinksCategory" class="category-content">
+                <div class="item-row" data-item="jagermeister">
+                    <div class="item-info">
+                        <div class="item-name">Jägermeister shot</div>
+                        <div class="item-price">59 CZK / 2.40 EUR</div>
+                    </div>
+                    <div class="item-quantity">
+                        <button class="decrease-qty">-</button>
+                        <span class="qty">0</span>
+                        <button class="increase-qty">+</button>
+                    </div>
+                </div>
+
+                <div class="item-row" data-item="soda">
+                    <div class="item-info">
+                        <div class="item-name">Coca-Cola, Sprite, Fanta</div>
+                        <div class="item-price">32 CZK / 1.3 EUR</div>
+                    </div>
+                    <div class="item-quantity">
+                        <button class="decrease-qty">-</button>
+                        <span class="qty">0</span>
+                        <button class="increase-qty">+</button>
+                    </div>
+                </div>
+
+                <div class="item-row" data-item="vitamin-water">
+                    <div class="item-info">
+                        <div class="item-name">Vitamin Water</div>
+                        <div class="item-price">35 CZK / 1.4 EUR</div>
+                    </div>
+                    <div class="item-quantity">
+                        <button class="decrease-qty">-</button>
+                        <span class="qty">0</span>
+                        <button class="increase-qty">+</button>
+                    </div>
+                </div>
+
+                <div class="item-row" data-item="redbull">
+                    <div class="item-info">
+                        <div class="item-name">Red Bull</div>
+                        <div class="item-price">60 CZK / 2.4 EUR</div>
+                    </div>
+                    <div class="item-quantity">
+                        <button class="decrease-qty">-</button>
+                        <span class="qty">0</span>
+                        <button class="increase-qty">+</button>
+                    </div>
+                </div>
+
+                <div class="item-row" data-item="jack-cola">
+                    <div class="item-info">
+                        <div class="item-name">Jack & Cola</div>
+                        <div class="item-price">125 CZK / 5 EUR</div>
+                    </div>
+                    <div class="item-quantity">
+                        <button class="decrease-qty">-</button>
+                        <span class="qty">0</span>
+                        <button class="increase-qty">+</button>
+                    </div>
+                </div>
+
+                <div class="item-row" data-item="gin-tonic">
+                    <div class="item-info">
+                        <div class="item-name">Gin & Tonic</div>
+                        <div class="item-price">75 CZK / 3 EUR</div>
+                    </div>
+                    <div class="item-quantity">
+                        <button class="decrease-qty">-</button>
+                        <span class="qty">0</span>
+                        <button class="increase-qty">+</button>
+                    </div>
+                </div>
+
+                <div class="item-row" data-item="moscow-mule">
+                    <div class="item-info">
+                        <div class="item-name">Moscow Mule</div>
+                        <div class="item-price">100 CZK / 4 EUR</div>
+                    </div>
+                    <div class="item-quantity">
+                        <button class="decrease-qty">-</button>
+                        <span class="qty">0</span>
+                        <button class="increase-qty">+</button>
+                    </div>
+                </div>
+
+                <div class="item-row" data-item="mojito">
+                    <div class="item-info">
+                        <div class="item-name">Mojito</div>
+                        <div class="item-price">100 CZK / 4 EUR</div>
+                    </div>
+                    <div class="item-quantity">
+                        <button class="decrease-qty">-</button>
+                        <span class="qty">0</span>
+                        <button class="increase-qty">+</button>
+                    </div>
+                </div>
+
+                <div class="item-row" data-item="pina-colada">
+                    <div class="item-info">
+                        <div class="item-name">Piña Colada</div>
+                        <div class="item-price">100 CZK / 4 EUR</div>
+                    </div>
+                    <div class="item-quantity">
+                        <button class="decrease-qty">-</button>
+                        <span class="qty">0</span>
+                        <button class="increase-qty">+</button>
+                    </div>
+                </div>
+
+                <div class="item-row" data-item="beer">
+                    <div class="item-info">
+                        <div class="item-name">Beer</div>
+                        <div class="item-price">60 CZK / 2.4 EUR</div>
+                    </div>
+                    <div class="item-quantity">
+                        <button class="decrease-qty">-</button>
+                        <span class="qty">0</span>
+                        <button class="increase-qty">+</button>
+                    </div>
+                </div>
+
+                <div class="item-row" data-item="prosecco">
+                    <div class="item-info">
+                        <div class="item-name">Prosecco</div>
+                        <div class="item-price">475 CZK / 19 EUR</div>
+                    </div>
+                    <div class="item-quantity">
+                        <button class="decrease-qty">-</button>
+                        <span class="qty">0</span>
+                        <button class="increase-qty">+</button>
+                    </div>
+                </div>
+            </div>
+
+            <div id="servicesCategory" class="category-content" style="display: none;">
+                <div class="item-row" data-item="grill-gas">
+                    <div class="item-info">
+                        <div class="item-name">Gas for grill</div>
+                        <div class="item-price">20 EUR</div>
+                    </div>
+                    <div class="item-quantity">
+                        <button class="decrease-qty">-</button>
+                        <span class="qty">0</span>
+                        <button class="increase-qty">+</button>
+                    </div>
+                </div>
+
+                <div class="item-row" data-item="fire-table-gas">
+                    <div class="item-info">
+                        <div class="item-name">Gas for fire table</div>
+                        <div class="item-price">12 EUR</div>
+                    </div>
+                    <div class="item-quantity">
+                        <button class="decrease-qty">-</button>
+                        <span class="qty">0</span>
+                        <button class="increase-qty">+</button>
+                    </div>
+                </div>
+
+                <div class="item-row" data-item="city-tax">
+                    <div class="item-info">
+                        <div class="item-name">City Tax</div>
+                        <div class="item-price">2 EUR / person / day</div>
+                        <div class="custom-input">
+                            <input type="number" id="cityTaxPeople" min="1" value="1"> people for 
+                            <input type="number" id="cityTaxDays" min="1" value="1"> days
+                        </div>
+                    </div>
+                    <div class="item-quantity">
+                        <button class="decrease-qty">-</button>
+                        <span class="qty">0</span>
+                        <button class="increase-qty">+</button>
+                    </div>
+                </div>
+
+                <div class="item-row" data-item="wellness-fee">
+                    <div class="item-info">
+                        <div class="item-name">Wellness fee</div>
+                        <div class="item-price">Custom amount</div>
+                        <div class="custom-input">
+                            <input type="number" id="wellnessFeeAmount" min="0" placeholder="Enter amount in EUR">
+                        </div>
+                    </div>
+                    <div class="item-quantity">
+                        <button class="decrease-qty">-</button>
+                        <span class="qty">0</span>
+                        <button class="increase-qty">+</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="order-summary">
+                <div class="order-summary-left">
+                    <div class="order-summary-label">Total Items</div>
+                    <div id="totalItems">0</div>
+                </div>
+                <div class="order-summary-right">
+                    <div class="order-summary-label">Total Amount</div>
+                    <div id="totalAmount">0.00 EUR</div>
+                </div>
+            </div>
+
+            <div class="action-buttons">
+                <button id="proceedToPayment" class="btn">Proceed to Payment</button>
+                <button id="clearOrder" class="btn secondary">Clear Order</button>
+            </div>
+        </div>
+
+        <!-- Payment Screen -->
+        <div id="paymentScreen" class="screen">
+            <div class="back-button" id="backToOrder">
+                <i class="fas fa-chevron-left"></i>
+            </div>
+            <div class="header">Payment Method</div>
+            
+            <div class="order-summary">
+                <div class="order-summary-left">
+                    <div class="order-summary-label">Total Items</div>
+                    <div id="paymentTotalItems">0</div>
+                </div>
+                <div class="order-summary-right">
+                    <div class="order-summary-label">Total Amount</div>
+                    <div id="paymentTotalAmount">0.00 EUR</div>
+                </div>
+            </div>
+            
+            <div class="payment-option" data-payment="cash">
+                <i class="fas fa-money-bill-wave"></i>
+                <div class="payment-option-info">
+                    <div>Cash</div>
+                    <div class="item-price">Pay with cash</div>
+                </div>
+            </div>
+            
+            <div class="payment-option" data-payment="card">
+                <i class="fas fa-credit-card"></i>
+                <div class="payment-option-info">
+                    <div>Card</div>
+                    <div class="item-price">Pay with credit/debit card</div>
+                </div>
+            </div>
+            
+            <div class="payment-option" data-payment="unpaid">
+                <i class="fas fa-clock"></i>
+                <div class="payment-option-info">
+                    <div>Unpaid</div>
+                    <div class="item-price">Mark as unpaid (pay later)</div>
+                </div>
+            </div>
+            
+            <div class="action-buttons">
+                <button id="completeOrder" class="btn success">Complete Order</button>
+                <button id="cancelPayment" class="btn secondary">Cancel</button>
+            </div>
+        </div>
+
+        <!-- Receipt Screen -->
+        <div id="receiptScreen" class="screen">
+            <div class="header">Order Completed</div>
+            
+            <div class="receipt" id="receiptContent">
+                <div class="receipt-header">
+                    <div class="receipt-title">RECEIPT</div>
+                    <div class="receipt-villa" id="receiptVilla">Villa Name</div>
+                    <div class="receipt-date" id="receiptDate">Date and Time</div>
+                </div>
+                
+                <div class="receipt-items" id="receiptItems">
+                    <!-- Receipt items will be inserted here dynamically -->
+                </div>
+                
+                <div class="receipt-total">
+                    <div>Total</div>
+                    <div id="receiptTotal">0.00 EUR</div>
+                </div>
+                
+                <div class="receipt-payment" id="receiptPayment">
+                    Paid with Cash
+                </div>
+            </div>
+            
+            <div class="action-buttons">
+                <button id="shareReceipt" class="btn">
+                    <i class="fas fa-share-alt"></i> Share Receipt
+                </button>
+                <button id="saveReceipt" class="btn secondary">
+                    <i class="fas fa-download"></i> Save as PDF
+                </button>
+                <button id="newOrder" class="btn success">
+                    <i class="fas fa-plus"></i> New Order
+                </button>
+            </div>
+        </div>
+
+        <!-- History Screen -->
+        <div id="historyScreen" class="screen">
+            <div class="header">Order History</div>
+            
+            <div id="orderHistory">
+                <!-- Order history will be populated dynamically -->
+                <div class="empty-state">
+                    <i class="fas fa-history"></i>
+                    <div>No orders yet</div>
+                </div>
+            </div>
+            
+            <div class="action-buttons">
+                <button id="clearHistory" class="btn danger">Clear History</button>
+                <button id="backToMain" class="btn secondary">Back to Main</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Loading indicator -->
+    <div class="loading" style="display: none;">
+        <div class="loading-spinner"></div>
+        <div>Processing...</div>
+    </div>
+
+    <!-- Notification -->
+    <div class="notification" id="notification"></div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
