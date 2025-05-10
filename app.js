@@ -62,13 +62,48 @@ function setupEventListeners() {
         });
     });
     
+    // Ruční zadávání množství přes input
+    document.querySelectorAll('.qty-input').forEach(input => {
+        input.addEventListener('change', () => {
+            const itemRow = input.closest('.item-row');
+            const itemId = itemRow.dataset.item;
+            const newQty = parseInt(input.value) || 0;
+            const currentQty = currentOrder[itemId] ? currentOrder[itemId].qty : 0;
+            
+            if (newQty > currentQty) {
+                // Přidání položek
+                if (itemId === 'city-tax') {
+                    const people = parseInt(document.getElementById('cityTaxPeople').value) || 1;
+                    const days = parseInt(document.getElementById('cityTaxDays').value) || 1;
+                    addItem(itemId, newQty - currentQty, people, days);
+                } else if (itemId === 'wellness-fee') {
+                    const amount = parseFloat(document.getElementById('wellnessFeeAmount').value) || 0;
+                    if (amount > 0) {
+                        addCustomItem(itemId, newQty - currentQty, amount);
+                    } else {
+                        showNotification("Please enter a valid amount");
+                        input.value = currentQty;
+                        return;
+                    }
+                } else {
+                    addItem(itemId, newQty - currentQty);
+                }
+            } else if (newQty < currentQty) {
+                // Odebrání položek
+                removeItem(itemId, currentQty - newQty);
+            }
+            
+            updateOrderSummary();
+        });
+    });
+    
     // Quantity buttons
     document.querySelectorAll('.increase-qty').forEach(button => {
         button.addEventListener('click', (e) => {
             const itemRow = e.target.closest('.item-row');
             const itemId = itemRow.dataset.item;
-            const qtyElement = itemRow.querySelector('.qty');
-            let qty = parseInt(qtyElement.textContent);
+            const qtyInput = itemRow.querySelector('.qty-input');
+            let qty = parseInt(qtyInput.value) || 0;
             
             // If it's a special item with custom fields
             if (itemId === 'city-tax') {
@@ -87,7 +122,7 @@ function setupEventListeners() {
                 addItem(itemId, 1);
             }
             
-            qtyElement.textContent = qty + 1;
+            qtyInput.value = qty + 1;
             updateOrderSummary();
         });
     });
@@ -96,12 +131,12 @@ function setupEventListeners() {
         button.addEventListener('click', (e) => {
             const itemRow = e.target.closest('.item-row');
             const itemId = itemRow.dataset.item;
-            const qtyElement = itemRow.querySelector('.qty');
-            let qty = parseInt(qtyElement.textContent);
+            const qtyInput = itemRow.querySelector('.qty-input');
+            let qty = parseInt(qtyInput.value) || 0;
             
             if (qty > 0) {
                 removeItem(itemId, 1);
-                qtyElement.textContent = qty - 1;
+                qtyInput.value = qty - 1;
                 updateOrderSummary();
             }
         });
@@ -159,8 +194,8 @@ function setupEventListeners() {
     
     document.getElementById('clearOrder').addEventListener('click', () => {
         initializeOrder();
-        document.querySelectorAll('.qty').forEach(qty => {
-            qty.textContent = "0";
+        document.querySelectorAll('.qty-input').forEach(input => {
+            input.value = "0";
         });
         updateOrderSummary();
     });
@@ -568,7 +603,7 @@ function showNotification(message) {
 // Register service worker for PWA
 if ('serviceWorker' in navigator) {
     window.addEventListener('load', () => {
-        navigator.serviceWorker.register('/service-worker.js')
+        navigator.serviceWorker.register('./service-worker.js')  // Změněno na relativní cestu
             .then(registration => {
                 console.log('ServiceWorker registered: ', registration.scope);
             })
