@@ -1,4 +1,4 @@
-const CACHE_NAME = 'villa-pos-v1';
+const CACHE_NAME = 'villa-pos-v2';
 const urlsToCache = [
   './',
   './index.html',
