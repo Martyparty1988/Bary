@@ -5,11 +5,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Villa POS</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="style.css">
     <link rel="manifest" href="manifest.json">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <link rel="apple-touch-icon" href="icon-192x192.png">
+    <style>
+        /* Styly pro ruční zadávání množství */
+        .qty-input {
+            width: 40px;
+            text-align: center;
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+            padding: 5px;
+            font-size: 16px;
+            font-weight: 500;
+            -moz-appearance: textfield; /* Odstraní šipky v Firefoxu */
+        }
+        
+        .qty-input::-webkit-outer-spin-button,
+        .qty-input::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+    </style>
 </head>
 <body>
     <div class="container">
@@ -55,7 +74,7 @@
                     </div>
                     <div class="item-quantity">
                         <button class="decrease-qty">-</button>
-                        <span class="qty">0</span>
+                        <input type="number" class="qty-input" value="0" min="0">
                         <button class="increase-qty">+</button>
                     </div>
                 </div>
@@ -67,11 +86,13 @@
                     </div>
                     <div class="item-quantity">
                         <button class="decrease-qty">-</button>
-                        <span class="qty">0</span>
+                        <input type="number" class="qty-input" value="0" min="0">
                         <button class="increase-qty">+</button>
                     </div>
                 </div>
 
+                <!-- Další položky obdobně... -->
+                
                 <div class="item-row" data-item="vitamin-water">
                     <div class="item-info">
                         <div class="item-name">Vitamin Water</div>
@@ -79,7 +100,7 @@
                     </div>
                     <div class="item-quantity">
                         <button class="decrease-qty">-</button>
-                        <span class="qty">0</span>
+                        <input type="number" class="qty-input" value="0" min="0">
                         <button class="increase-qty">+</button>
                     </div>
                 </div>
@@ -91,7 +112,7 @@
                     </div>
                     <div class="item-quantity">
                         <button class="decrease-qty">-</button>
-                        <span class="qty">0</span>
+                        <input type="number" class="qty-input" value="0" min="0">
                         <button class="increase-qty">+</button>
                     </div>
                 </div>
@@ -103,7 +124,7 @@
                     </div>
                     <div class="item-quantity">
                         <button class="decrease-qty">-</button>
-                        <span class="qty">0</span>
+                        <input type="number" class="qty-input" value="0" min="0">
                         <button class="increase-qty">+</button>
                     </div>
                 </div>
@@ -115,7 +136,7 @@
                     </div>
                     <div class="item-quantity">
                         <button class="decrease-qty">-</button>
-                        <span class="qty">0</span>
+                        <input type="number" class="qty-input" value="0" min="0">
                         <button class="increase-qty">+</button>
                     </div>
                 </div>
@@ -127,7 +148,7 @@
                     </div>
                     <div class="item-quantity">
                         <button class="decrease-qty">-</button>
-                        <span class="qty">0</span>
+                        <input type="number" class="qty-input" value="0" min="0">
                         <button class="increase-qty">+</button>
                     </div>
                 </div>
@@ -139,7 +160,7 @@
                     </div>
                     <div class="item-quantity">
                         <button class="decrease-qty">-</button>
-                        <span class="qty">0</span>
+                        <input type="number" class="qty-input" value="0" min="0">
                         <button class="increase-qty">+</button>
                     </div>
                 </div>
@@ -151,7 +172,7 @@
                     </div>
                     <div class="item-quantity">
                         <button class="decrease-qty">-</button>
-                        <span class="qty">0</span>
+                        <input type="number" class="qty-input" value="0" min="0">
                         <button class="increase-qty">+</button>
                     </div>
                 </div>
@@ -163,7 +184,7 @@
                     </div>
                     <div class="item-quantity">
                         <button class="decrease-qty">-</button>
-                        <span class="qty">0</span>
+                        <input type="number" class="qty-input" value="0" min="0">
                         <button class="increase-qty">+</button>
                     </div>
                 </div>
@@ -175,7 +196,7 @@
                     </div>
                     <div class="item-quantity">
                         <button class="decrease-qty">-</button>
-                        <span class="qty">0</span>
+                        <input type="number" class="qty-input" value="0" min="0">
                         <button class="increase-qty">+</button>
                     </div>
                 </div>
@@ -189,7 +210,7 @@
                     </div>
                     <div class="item-quantity">
                         <button class="decrease-qty">-</button>
-                        <span class="qty">0</span>
+                        <input type="number" class="qty-input" value="0" min="0">
                         <button class="increase-qty">+</button>
                     </div>
                 </div>
@@ -201,7 +222,7 @@
                     </div>
                     <div class="item-quantity">
                         <button class="decrease-qty">-</button>
-                        <span class="qty">0</span>
+                        <input type="number" class="qty-input" value="0" min="0">
                         <button class="increase-qty">+</button>
                     </div>
                 </div>
@@ -217,7 +238,7 @@
                     </div>
                     <div class="item-quantity">
                         <button class="decrease-qty">-</button>
-                        <span class="qty">0</span>
+                        <input type="number" class="qty-input" value="0" min="0">
                         <button class="increase-qty">+</button>
                     </div>
                 </div>
@@ -232,7 +253,7 @@
                     </div>
                     <div class="item-quantity">
                         <button class="decrease-qty">-</button>
-                        <span class="qty">0</span>
+                        <input type="number" class="qty-input" value="0" min="0">
                         <button class="increase-qty">+</button>
                     </div>
                 </div>
@@ -255,6 +276,8 @@
             </div>
         </div>
 
+        <!-- Zbytek HTML zůstává stejný... -->
+        
         <!-- Payment Screen -->
         <div id="paymentScreen" class="screen">
             <div class="back-button" id="backToOrder">
