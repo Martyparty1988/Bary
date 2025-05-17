@@ -1,143 +1,5 @@
 // Villa POS System
 
-// Define language translations
-const translations = {
-    en: {
-        selectVilla: "Select Villa",
-        newOrder: "New Order",
-        drinks: "Drinks",
-        services: "Services",
-        gifts: "Gifts",
-        custom: "Custom",
-        searchItems: "Search items...",
-        customItems: "Custom Items",
-        itemName: "Item name",
-        itemPrice: "Price in EUR",
-        addItem: "Add Item",
-        markAsGift: "Mark as gift",
-        giftItems: "Gift Items",
-        giftInfo: "Items added here will be marked as gifts and won't be charged",
-        discounts: "Discounts",
-        discountPercent: "%",
-        discountAmount: "EUR",
-        applyPercentDiscount: "Apply %",
-        applyAmountDiscount: "Apply €",
-        removeDiscount: "Remove Discount",
-        totalItems: "Total Items",
-        totalAmount: "Total Amount",
-        giftValue: "Gift Value",
-        discount: "Discount",
-        discountValue: "Discount Value",
-        finalTotal: "Final Total",
-        proceedToPayment: "Proceed to Payment",
-        clearOrder: "Clear Order",
-        paymentMethod: "Payment Method",
-        cash: "Cash",
-        cashDescription: "Pay with cash",
-        card: "Card",
-        cardDescription: "Pay with credit/debit card",
-        unpaid: "Unpaid",
-        unpaidDescription: "Mark as unpaid (pay later)",
-        completeOrder: "Complete Order",
-        cancel: "Cancel",
-        orderCompleted: "Order Completed",
-        receipt: "RECEIPT",
-        paidItems: "Paid Items",
-        total: "Total",
-        shareReceipt: "Share Receipt",
-        saveAsPDF: "Save as PDF",
-        newOrder: "New Order",
-        orderHistory: "Order History",
-        noOrders: "No orders yet",
-        clearHistory: "Clear History",
-        backToMain: "Back to Main",
-        processing: "Processing...",
-        beerKeg30: "Beer Keg 30L",
-        beerKeg50: "Beer Keg 50L",
-        freeItem: "Free",
-        giftBeer: "Beer (Gift)",
-        giftProsecco: "Prosecco (Gift)",
-        giftCocktail: "Cocktail (Gift)",
-        pleaseAddItems: "Please add items to your order",
-        selectPaymentMethod: "Please select a payment method",
-        receiptSaved: "Receipt saved as PDF",
-        receiptShared: "Receipt shared successfully",
-        errorSharing: "Error sharing receipt",
-        sharingNotSupported: "Sharing not supported on this device",
-        enterValidAmount: "Please enter a valid amount",
-        enterItemNamePrice: "Please enter item name and price",
-        discountApplied: "Discount applied",
-        discountRemoved: "Discount removed"
-    },
-    cs: {
-        selectVilla: "Vyberte vilu",
-        newOrder: "Nová objednávka",
-        drinks: "Nápoje",
-        services: "Služby",
-        gifts: "Dárky",
-        custom: "Vlastní",
-        searchItems: "Hledat položky...",
-        customItems: "Vlastní položky",
-        itemName: "Název položky",
-        itemPrice: "Cena v EUR",
-        addItem: "Přidat položku",
-        markAsGift: "Označit jako dárek",
-        giftItems: "Dárkové položky",
-        giftInfo: "Položky přidané zde budou označeny jako dárky a nebudou účtovány",
-        discounts: "Slevy",
-        discountPercent: "%",
-        discountAmount: "EUR",
-        applyPercentDiscount: "Použít %",
-        applyAmountDiscount: "Použít €",
-        removeDiscount: "Odstranit slevu",
-        totalItems: "Počet položek",
-        totalAmount: "Celková částka",
-        giftValue: "Hodnota dárků",
-        discount: "Sleva",
-        discountValue: "Hodnota slevy",
-        finalTotal: "Konečná cena",
-        proceedToPayment: "Pokračovat k platbě",
-        clearOrder: "Vymazat objednávku",
-        paymentMethod: "Způsob platby",
-        cash: "Hotovost",
-        cashDescription: "Platba v hotovosti",
-        card: "Karta",
-        cardDescription: "Platba kartou",
-        unpaid: "Nezaplaceno",
-        unpaidDescription: "Označit jako nezaplacené (platba později)",
-        completeOrder: "Dokončit objednávku",
-        cancel: "Zrušit",
-        orderCompleted: "Objednávka dokončena",
-        receipt: "ÚČTENKA",
-        paidItems: "Placené položky",
-        total: "Celkem",
-        shareReceipt: "Sdílet účtenku",
-        saveAsPDF: "Uložit jako PDF",
-        newOrder: "Nová objednávka",
-        orderHistory: "Historie objednávek",
-        noOrders: "Zatím žádné objednávky",
-        clearHistory: "Vymazat historii",
-        backToMain: "Zpět na hlavní stránku",
-        processing: "Zpracování...",
-        beerKeg30: "Sud piva 30L",
-        beerKeg50: "Sud piva 50L",
-        freeItem: "Zdarma",
-        giftBeer: "Pivo (Dárek)",
-        giftProsecco: "Prosecco (Dárek)",
-        giftCocktail: "Koktejl (Dárek)",
-        pleaseAddItems: "Přidejte položky do objednávky",
-        selectPaymentMethod: "Vyberte způsob platby",
-        receiptSaved: "Účtenka uložena jako PDF",
-        receiptShared: "Účtenka úspěšně sdílena",
-        errorSharing: "Chyba při sdílení účtenky",
-        sharingNotSupported: "Sdílení není na tomto zařízení podporováno",
-        enterValidAmount: "Zadejte platnou částku",
-        enterItemNamePrice: "Zadejte název a cenu položky",
-        discountApplied: "Sleva aplikována",
-        discountRemoved: "Sleva odstraněna"
-    }
-};
-
 // Define the items data
 const itemsData = {
     "jagermeister": { name: "Jägermeister shot", priceCZK: 59, priceEUR: 2.40, category: "drinks" },
@@ -154,14 +16,7 @@ const itemsData = {
     "grill-gas": { name: "Gas for grill", priceCZK: 500, priceEUR: 20, category: "services" },
     "fire-table-gas": { name: "Gas for fire table", priceCZK: 300, priceEUR: 12, category: "services" },
     "city-tax": { name: "City Tax", priceCZK: 50, priceEUR: 2, category: "services", isPerPersonDay: true },
-    "wellness-fee": { name: "Wellness fee", priceCZK: 0, priceEUR: 0, category: "services", isCustom: true },
-    // New beer kegs
-    "beer-keg-30": { name: "Beer Keg 30L", priceCZK: 3000, priceEUR: 120, category: "drinks" },
-    "beer-keg-50": { name: "Beer Keg 50L", priceCZK: 4375, priceEUR: 175, category: "drinks" },
-    // Gift items
-    "gift-beer": { name: "Beer (Gift)", priceCZK: 60, priceEUR: 2.4, category: "gifts", isGift: true },
-    "gift-prosecco": { name: "Prosecco (Gift)", priceCZK: 475, priceEUR: 19, category: "gifts", isGift: true },
-    "gift-cocktail": { name: "Cocktail (Gift)", priceCZK: 100, priceEUR: 4, category: "gifts", isGift: true }
+    "wellness-fee": { name: "Wellness fee", priceCZK: 0, priceEUR: 0, category: "services", isCustom: true }
 };
 
 // App state
@@ -169,12 +24,6 @@ let currentVilla = "";
 let currentOrder = {};
 let currentPayment = "";
 let orderHistory = [];
-let currentLanguage = "en";
-let currentDiscount = {
-    type: null, // "percent" or "amount"
-    value: 0,
-    amountEUR: 0
-};
 
 // Initialize the app
 document.addEventListener("DOMContentLoaded", () => {
@@ -186,73 +35,7 @@ document.addEventListener("DOMContentLoaded", () => {
     
     // Setup search functionality
     setupSearch();
-    
-    // Setup language switcher
-    setupLanguage();
 });
-
-// Set up language switcher
-function setupLanguage() {
-    document.querySelectorAll('.lang-btn').forEach(btn => {
-        btn.addEventListener('click', () => {
-            document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
-            btn.classList.add('active');
-            
-            switchLanguage(btn.dataset.lang);
-        });
-    });
-    
-    // Initial language update
-    updateLanguageText();
-}
-
-// Switch language
-function switchLanguage(lang) {
-    currentLanguage = lang;
-    updateLanguageText();
-}
-
-// Update UI text based on selected language
-function updateLanguageText() {
-    // Update elements with data-lang-key attribute
-    document.querySelectorAll('[data-lang-key]').forEach(el => {
-        const key = el.getAttribute('data-lang-key');
-        if (translations[currentLanguage][key]) {
-            el.textContent = translations[currentLanguage][key];
-        }
-    });
-    
-    // Update placeholders
-    document.querySelectorAll('[data-lang-placeholder]').forEach(el => {
-        const key = el.getAttribute('data-lang-placeholder');
-        if (translations[currentLanguage][key]) {
-            el.placeholder = translations[currentLanguage][key];
-        }
-    });
-    
-    // Update special items with language-specific names
-    updateItemNames();
-}
-
-// Update item names based on language
-function updateItemNames() {
-    // Update beer kegs names
-    const beerKeg30 = document.querySelector('.item-row[data-item="beer-keg-30"] .item-name');
-    if (beerKeg30) beerKeg30.textContent = translations[currentLanguage].beerKeg30;
-    
-    const beerKeg50 = document.querySelector('.item-row[data-item="beer-keg-50"] .item-name');
-    if (beerKeg50) beerKeg50.textContent = translations[currentLanguage].beerKeg50;
-    
-    // Update gift items
-    const giftBeer = document.querySelector('.item-row[data-item="gift-beer"] .item-name');
-    if (giftBeer) giftBeer.textContent = translations[currentLanguage].giftBeer;
-    
-    const giftProsecco = document.querySelector('.item-row[data-item="gift-prosecco"] .item-name');
-    if (giftProsecco) giftProsecco.textContent = translations[currentLanguage].giftProsecco;
-    
-    const giftCocktail = document.querySelector('.item-row[data-item="gift-cocktail"] .item-name');
-    if (giftCocktail) giftCocktail.textContent = translations[currentLanguage].giftCocktail;
-}
 
 // Set up event listeners
 function setupEventListeners() {
@@ -279,7 +62,7 @@ function setupEventListeners() {
         });
     });
     
-    // Manual quantity input
+    // Ruční zadávání množství přes input
     document.querySelectorAll('.qty-input').forEach(input => {
         input.addEventListener('change', () => {
             const itemRow = input.closest('.item-row');
@@ -288,7 +71,7 @@ function setupEventListeners() {
             const currentQty = currentOrder[itemId] ? currentOrder[itemId].qty : 0;
             
             if (newQty > currentQty) {
-                // Add items
+                // Přidání položek
                 if (itemId === 'city-tax') {
                     const people = parseInt(document.getElementById('cityTaxPeople').value) || 1;
                     const days = parseInt(document.getElementById('cityTaxDays').value) || 1;
@@ -298,17 +81,15 @@ function setupEventListeners() {
                     if (amount > 0) {
                         addCustomItem(itemId, newQty - currentQty, amount);
                     } else {
-                        showNotification(translations[currentLanguage].enterValidAmount);
+                        showNotification("Please enter a valid amount");
                         input.value = currentQty;
                         return;
                     }
-                } else if (itemId.startsWith('gift-')) {
-                    addGiftItem(itemId, newQty - currentQty);
                 } else {
                     addItem(itemId, newQty - currentQty);
                 }
             } else if (newQty < currentQty) {
-                // Remove items
+                // Odebrání položek
                 removeItem(itemId, currentQty - newQty);
             }
             
@@ -334,11 +115,9 @@ function setupEventListeners() {
                 if (amount > 0) {
                     addCustomItem(itemId, 1, amount);
                 } else {
-                    showNotification(translations[currentLanguage].enterValidAmount);
+                    showNotification("Please enter a valid amount");
                     return;
                 }
-            } else if (itemId.startsWith('gift-')) {
-                addGiftItem(itemId, 1);
             } else {
                 addItem(itemId, 1);
             }
@@ -399,114 +178,6 @@ function setupEventListeners() {
         }
     });
     
-    // Custom item
-    document.getElementById('addCustomItem').addEventListener('click', () => {
-        const name = document.getElementById('customItemName').value;
-        const price = parseFloat(document.getElementById('customItemPrice').value);
-        const isGift = document.getElementById('customItemGift').checked;
-        
-        if (!name || !price) {
-            showNotification(translations[currentLanguage].enterItemNamePrice);
-            return;
-        }
-        
-        // Generate a unique ID for the custom item
-        const itemId = 'custom-' + Date.now();
-        
-        // Add to custom items list
-        const customItemsList = document.getElementById('customItemsList');
-        const itemRow = document.createElement('div');
-        itemRow.className = 'item-row';
-        itemRow.dataset.item = itemId;
-        if (isGift) itemRow.classList.add('gift-item');
-        
-        itemRow.innerHTML = `
-            <div class="item-info">
-                <div class="item-name">${name}</div>
-                <div class="item-price">${isGift ? '0 EUR (' + translations[currentLanguage].freeItem + ')' : price.toFixed(2) + ' EUR'}</div>
-            </div>
-            <div class="item-quantity">
-                <button class="decrease-qty">-</button>
-                <input type="number" class="qty-input" value="0" min="0">
-                <button class="increase-qty">+</button>
-            </div>
-        `;
-        
-        customItemsList.appendChild(itemRow);
-        
-        // Add event listeners for the new item
-        const qtyInput = itemRow.querySelector('.qty-input');
-        qtyInput.addEventListener('change', () => {
-            const newQty = parseInt(qtyInput.value) || 0;
-            const currentQty = currentOrder[itemId] ? currentOrder[itemId].qty : 0;
-            
-            if (newQty > currentQty) {
-                if (isGift) {
-                    addCustomGiftItem(itemId, name, price, newQty - currentQty);
-                } else {
-                    addCustomRegularItem(itemId, name, price, newQty - currentQty);
-                }
-            } else if (newQty < currentQty) {
-                removeItem(itemId, currentQty - newQty);
-            }
-            
-            updateOrderSummary();
-        });
-        
-        itemRow.querySelector('.increase-qty').addEventListener('click', () => {
-            let qty = parseInt(qtyInput.value) || 0;
-            
-            if (isGift) {
-                addCustomGiftItem(itemId, name, price, 1);
-            } else {
-                addCustomRegularItem(itemId, name, price, 1);
-            }
-            
-            qtyInput.value = qty + 1;
-            updateOrderSummary();
-        });
-        
-        itemRow.querySelector('.decrease-qty').addEventListener('click', () => {
-            let qty = parseInt(qtyInput.value) || 0;
-            
-            if (qty > 0) {
-                removeItem(itemId, 1);
-                qtyInput.value = qty - 1;
-                updateOrderSummary();
-            }
-        });
-        
-        // Clear form
-        document.getElementById('customItemName').value = '';
-        document.getElementById('customItemPrice').value = '';
-        document.getElementById('customItemGift').checked = false;
-    });
-    
-    // Discount buttons
-    document.getElementById('applyPercentDiscount').addEventListener('click', () => {
-        const percent = parseFloat(document.getElementById('discountPercent').value);
-        if (!percent || percent <= 0 || percent > 100) {
-            showNotification(translations[currentLanguage].enterValidAmount);
-            return;
-        }
-        
-        applyDiscount('percent', percent);
-    });
-    
-    document.getElementById('applyAmountDiscount').addEventListener('click', () => {
-        const amount = parseFloat(document.getElementById('discountAmount').value);
-        if (!amount || amount <= 0) {
-            showNotification(translations[currentLanguage].enterValidAmount);
-            return;
-        }
-        
-        applyDiscount('amount', amount);
-    });
-    
-    document.getElementById('removeDiscount').addEventListener('click', () => {
-        removeDiscount();
-    });
-    
     // Navigation buttons
     document.getElementById('backToVilla').addEventListener('click', () => {
         showScreen('villaScreen');
@@ -517,7 +188,7 @@ function setupEventListeners() {
             updatePaymentSummary();
             showScreen('paymentScreen');
         } else {
-            showNotification(translations[currentLanguage].pleaseAddItems);
+            showNotification("Please add items to your order");
         }
     });
     
@@ -527,7 +198,6 @@ function setupEventListeners() {
             input.value = "0";
         });
         updateOrderSummary();
-        removeDiscount();
     });
     
     document.getElementById('backToOrder').addEventListener('click', () => {
@@ -552,7 +222,7 @@ function setupEventListeners() {
     // Complete order
     document.getElementById('completeOrder').addEventListener('click', () => {
         if (!currentPayment) {
-            showNotification(translations[currentLanguage].selectPaymentMethod);
+            showNotification("Please select a payment method");
             return;
         }
         
@@ -595,11 +265,10 @@ function setupSearch() {
 // Initialize a new order
 function initializeOrder() {
     currentOrder = {};
-    currentDiscount = { type: null, value: 0, amountEUR: 0 };
     updateOrderSummary();
 }
 
-// Add a regular item to the current order
+// Add an item to the current order
 function addItem(itemId, quantity = 1, people = 1, days = 1) {
     const item = itemsData[itemId];
     
@@ -610,8 +279,7 @@ function addItem(itemId, quantity = 1, people = 1, days = 1) {
             priceCZK: item.priceCZK,
             qty: 0,
             totalEUR: 0,
-            totalCZK: 0,
-            isGift: false
+            totalCZK: 0
         };
         
         if (item.isPerPersonDay) {
@@ -631,67 +299,6 @@ function addItem(itemId, quantity = 1, people = 1, days = 1) {
     }
 }
 
-// Add a gift item to the current order
-function addGiftItem(itemId, quantity = 1) {
-    const item = itemsData[itemId];
-    
-    if (!currentOrder[itemId]) {
-        currentOrder[itemId] = {
-            name: item.name,
-            priceEUR: item.priceEUR,
-            priceCZK: item.priceCZK,
-            qty: 0,
-            totalEUR: 0,
-            totalCZK: 0,
-            isGift: true
-        };
-    }
-    
-    currentOrder[itemId].qty += quantity;
-    currentOrder[itemId].totalEUR = currentOrder[itemId].priceEUR * currentOrder[itemId].qty;
-    currentOrder[itemId].totalCZK = currentOrder[itemId].priceCZK * currentOrder[itemId].qty;
-}
-
-// Add a custom regular item
-function addCustomRegularItem(itemId, name, priceEUR, quantity = 1) {
-    if (!currentOrder[itemId]) {
-        currentOrder[itemId] = {
-            name: name,
-            priceEUR: priceEUR,
-            priceCZK: priceEUR * 25, // Approximate conversion
-            qty: 0,
-            totalEUR: 0,
-            totalCZK: 0,
-            isGift: false,
-            isCustom: true
-        };
-    }
-    
-    currentOrder[itemId].qty += quantity;
-    currentOrder[itemId].totalEUR = currentOrder[itemId].priceEUR * currentOrder[itemId].qty;
-    currentOrder[itemId].totalCZK = currentOrder[itemId].priceCZK * currentOrder[itemId].qty;
-}
-
-// Add a custom gift item
-function addCustomGiftItem(itemId, name, priceEUR, quantity = 1) {
-    if (!currentOrder[itemId]) {
-        currentOrder[itemId] = {
-            name: name,
-            priceEUR: priceEUR,
-            priceCZK: priceEUR * 25, // Approximate conversion
-            qty: 0,
-            totalEUR: 0,
-            totalCZK: 0,
-            isGift: true,
-            isCustom: true
-        };
-    }
-    
-    currentOrder[itemId].qty += quantity;
-    currentOrder[itemId].totalEUR = currentOrder[itemId].priceEUR * currentOrder[itemId].qty;
-    currentOrder[itemId].totalCZK = currentOrder[itemId].priceCZK * currentOrder[itemId].qty;
-}
-
 // Add a custom item (like wellness fee)
 function addCustomItem(itemId, quantity = 1, amount = 0) {
     const item = itemsData[itemId];
@@ -702,8 +309,7 @@ function addCustomItem(itemId, quantity = 1, amount = 0) {
             customAmount: amount,
             qty: 0,
             totalEUR: 0,
-            totalCZK: 0,
-            isGift: false
+            totalCZK: 0
         };
     }
     
@@ -720,12 +326,12 @@ function removeItem(itemId, quantity = 1) {
         if (currentOrder[itemId].qty <= 0) {
             delete currentOrder[itemId];
         } else {
-            if (itemsData[itemId] && itemsData[itemId].isPerPersonDay) {
+            if (itemsData[itemId].isPerPersonDay) {
                 const people = currentOrder[itemId].people;
                 const days = currentOrder[itemId].days;
                 currentOrder[itemId].totalEUR = currentOrder[itemId].priceEUR * people * days;
                 currentOrder[itemId].totalCZK = currentOrder[itemId].priceCZK * people * days;
-            } else if (itemsData[itemId] && itemsData[itemId].isCustom) {
+            } else if (itemsData[itemId].isCustom) {
                 const amount = currentOrder[itemId].customAmount;
                 currentOrder[itemId].totalEUR = amount;
                 currentOrder[itemId].totalCZK = amount * 25;
@@ -737,176 +343,44 @@ function removeItem(itemId, quantity = 1) {
     }
 }
 
-// Apply discount
-function applyDiscount(type, value) {
-    currentDiscount.type = type;
-    currentDiscount.value = value;
-    
-    const subtotal = getTotalAmount(false);
-    
-    if (type === 'percent') {
-        currentDiscount.amountEUR = (subtotal * value / 100);
-    } else {
-        currentDiscount.amountEUR = value;
-    }
-    
-    updateOrderSummary();
-    showNotification(translations[currentLanguage].discountApplied);
-}
-
-// Remove discount
-function removeDiscount() {
-    currentDiscount = { type: null, value: 0, amountEUR: 0 };
-    updateOrderSummary();
-    
-    // Hide discount elements
-    document.querySelector('.discount-summary').style.display = 'none';
-    document.querySelector('.final-total').style.display = 'none';
-    
-    showNotification(translations[currentLanguage].discountRemoved);
-}
-
 // Update the order summary
 function updateOrderSummary() {
     const totalItems = getTotalItems();
-    const totalGiftItems = getTotalGiftItems();
-    const totalAmount = getTotalAmount(false);
-    const totalGiftAmount = getTotalGiftAmount();
+    const totalAmount = getTotalAmount();
     
     document.getElementById('totalItems').textContent = totalItems;
     document.getElementById('totalAmount').textContent = totalAmount.toFixed(2) + ' EUR';
-    
-    document.getElementById('totalGiftItems').textContent = totalGiftItems;
-    document.getElementById('totalGiftAmount').textContent = totalGiftAmount.toFixed(2) + ' EUR';
-    
-    // Handle discount if applied
-    if (currentDiscount.type) {
-        const discountSummary = document.querySelector('.discount-summary');
-        const finalTotal = document.querySelector('.final-total');
-        
-        // Show discount elements
-        discountSummary.style.display = 'flex';
-        finalTotal.style.display = 'flex';
-        
-        // Update discount type and value
-        document.getElementById('discountType').textContent = 
-            currentDiscount.type === 'percent' ? 
-            currentDiscount.value + '%' : 
-            currentDiscount.value.toFixed(2) + ' EUR';
-        
-        document.getElementById('discountValue').textContent = currentDiscount.amountEUR.toFixed(2) + ' EUR';
-        
-        // Calculate final total
-        const finalTotalAmount = Math.max(0, totalAmount - currentDiscount.amountEUR);
-        document.getElementById('finalTotalAmount').textContent = finalTotalAmount.toFixed(2) + ' EUR';
-    } else {
-        // Hide discount elements
-        document.querySelector('.discount-summary').style.display = 'none';
-        document.querySelector('.final-total').style.display = 'none';
-    }
 }
 
 // Update the payment summary
 function updatePaymentSummary() {
     const totalItems = getTotalItems();
-    const totalGiftItems = getTotalGiftItems();
-    const totalAmount = getTotalAmount(false);
-    const totalGiftAmount = getTotalGiftAmount();
+    const totalAmount = getTotalAmount();
     
     document.getElementById('paymentTotalItems').textContent = totalItems;
     document.getElementById('paymentTotalAmount').textContent = totalAmount.toFixed(2) + ' EUR';
-    
-    document.getElementById('paymentTotalGiftItems').textContent = totalGiftItems;
-    document.getElementById('paymentTotalGiftAmount').textContent = totalGiftAmount.toFixed(2) + ' EUR';
-    
-    // Handle discount if applied
-    if (currentDiscount.type) {
-        const discountSummary = document.querySelector('#paymentScreen .discount-summary');
-        const finalTotal = document.querySelector('#paymentScreen .final-total');
-        
-        // Show discount elements
-        discountSummary.style.display = 'flex';
-        finalTotal.style.display = 'flex';
-        
-        // Update discount type and value
-        document.getElementById('paymentDiscountType').textContent = 
-            currentDiscount.type === 'percent' ? 
-            currentDiscount.value + '%' : 
-            currentDiscount.value.toFixed(2) + ' EUR';
-        
-        document.getElementById('paymentDiscountValue').textContent = currentDiscount.amountEUR.toFixed(2) + ' EUR';
-        
-        // Calculate final total
-        const finalTotalAmount = Math.max(0, totalAmount - currentDiscount.amountEUR);
-        document.getElementById('paymentFinalTotalAmount').textContent = finalTotalAmount.toFixed(2) + ' EUR';
-    } else {
-        // Hide discount elements
-        document.querySelector('#paymentScreen .discount-summary').style.display = 'none';
-        document.querySelector('#paymentScreen .final-total').style.display = 'none';
-    }
 }
 
-// Get the total number of items in the order (excluding gifts)
+// Get the total number of items in the order
 function getTotalItems() {
     let total = 0;
     
     for (const itemId in currentOrder) {
-        if (!currentOrder[itemId].isGift) {
-            total += currentOrder[itemId].qty;
-        }
+        total += currentOrder[itemId].qty;
     }
     
     return total;
 }
 
-// Get the total number of gift items
-function getTotalGiftItems() {
+// Get the total amount of the order in EUR
+function getTotalAmount() {
     let total = 0;
     
     for (const itemId in currentOrder) {
-        if (currentOrder[itemId].isGift) {
-            total += currentOrder[itemId].qty;
-        }
+        total += currentOrder[itemId].totalEUR;
     }
     
     return total;
-}
-
-// Get the total amount of the order in EUR (optionally including gifts)
-function getTotalAmount(includeGifts = false) {
-    let total = 0;
-    
-    for (const itemId in currentOrder) {
-        if (includeGifts || !currentOrder[itemId].isGift) {
-            total += currentOrder[itemId].totalEUR;
-        }
-    }
-    
-    return total;
-}
-
-// Get the total gift amount
-function getTotalGiftAmount() {
-    let total = 0;
-    
-    for (const itemId in currentOrder) {
-        if (currentOrder[itemId].isGift) {
-            total += currentOrder[itemId].totalEUR;
-        }
-    }
-    
-    return total;
-}
-
-// Get the final total amount after discount
-function getFinalTotalAmount() {
-    const subtotal = getTotalAmount(false);
-    
-    if (currentDiscount.type) {
-        return Math.max(0, subtotal - currentDiscount.amountEUR);
-    }
-    
-    return subtotal;
 }
 
 // Complete the order
@@ -921,11 +395,6 @@ function completeOrder() {
         const timeStr = now.toLocaleTimeString();
         const dateTimeStr = `${dateStr} ${timeStr}`;
         
-        // Calculate final totals
-        const subtotal = getTotalAmount(false);
-        const finalTotal = getFinalTotalAmount();
-        const giftTotal = getTotalGiftAmount();
-        
         // Create order object for history
         const order = {
             id: Date.now(),
@@ -935,11 +404,7 @@ function completeOrder() {
             timestamp: now.getTime(),
             items: { ...currentOrder },
             totalItems: getTotalItems(),
-            totalGiftItems: getTotalGiftItems(),
-            subtotalAmount: subtotal,
-            discount: { ...currentDiscount },
-            finalAmount: finalTotal,
-            giftAmount: giftTotal,
+            totalAmount: getTotalAmount(),
             payment: currentPayment
         };
         
@@ -965,20 +430,12 @@ function generateReceipt(order) {
     document.getElementById('receiptVilla').textContent = order.villa;
     document.getElementById('receiptDate').textContent = order.date;
     
-    // Paid items
-    const receiptPaidItemsContainer = document.getElementById('receiptPaidItems');
-    receiptPaidItemsContainer.innerHTML = "";
-    
-    // Gift items
-    const receiptGiftItemsContainer = document.getElementById('receiptGiftItems');
-    receiptGiftItemsContainer.innerHTML = "";
-    const receiptGiftSection = document.getElementById('receiptGiftSection');
-    
-    // Add items to receipt
-    let hasGiftItems = false;
+    const receiptItemsContainer = document.getElementById('receiptItems');
+    receiptItemsContainer.innerHTML = "";
     
     for (const itemId in order.items) {
         const item = order.items[itemId];
+        
         const itemElement = document.createElement('div');
         itemElement.className = 'receipt-item';
         
@@ -1010,51 +467,23 @@ function generateReceipt(order) {
         itemElement.appendChild(itemLeftElement);
         itemElement.appendChild(itemPriceElement);
         
-        if (item.isGift) {
-            receiptGiftItemsContainer.appendChild(itemElement);
-            hasGiftItems = true;
-        } else {
-            receiptPaidItemsContainer.appendChild(itemElement);
-        }
+        receiptItemsContainer.appendChild(itemElement);
     }
     
-    // Show or hide gift section
-    if (hasGiftItems) {
-        receiptGiftSection.style.display = 'block';
-        document.getElementById('receiptGiftTotal').textContent = `${order.giftAmount.toFixed(2)} EUR`;
-    } else {
-        receiptGiftSection.style.display = 'none';
-    }
+    document.getElementById('receiptTotal').textContent = `${order.totalAmount.toFixed(2)} EUR`;
     
-    // Handle discount if applied
-    const receiptDiscount = document.getElementById('receiptDiscount');
-    if (order.discount && order.discount.type) {
-        receiptDiscount.style.display = 'block';
-        document.getElementById('receiptDiscountType').textContent = 
-            order.discount.type === 'percent' ? 
-            order.discount.value + '%' : 
-            order.discount.value.toFixed(2) + ' EUR';
-            
-        document.getElementById('receiptDiscountValue').textContent = `-${order.discount.amountEUR.toFixed(2)} EUR`;
-        document.getElementById('receiptPaidTotal').textContent = `${order.finalAmount.toFixed(2)} EUR`;
-    } else {
-        receiptDiscount.style.display = 'none';
-        document.getElementById('receiptPaidTotal').textContent = `${order.subtotalAmount.toFixed(2)} EUR`;
-    }
-    
-    // Payment method
     const paymentElement = document.getElementById('receiptPayment');
     switch (order.payment) {
         case 'cash':
-            paymentElement.textContent = translations[currentLanguage].cash;
+            paymentElement.textContent = 'Paid with Cash';
             paymentElement.className = 'receipt-payment';
             break;
         case 'card':
-            paymentElement.textContent = translations[currentLanguage].card;
+            paymentElement.textContent = 'Paid with Card';
             paymentElement.className = 'receipt-payment';
             break;
         case 'unpaid':
-            paymentElement.textContent = translations[currentLanguage].unpaid;
+            paymentElement.textContent = 'UNPAID - To be paid later';
             paymentElement.className = 'receipt-payment receipt-unpaid';
             break;
     }
@@ -1078,7 +507,7 @@ function saveReceiptAsPDF() {
             pdf.save('receipt.pdf');
             
             hideLoading();
-            showNotification(translations[currentLanguage].receiptSaved);
+            showNotification("Receipt saved as PDF");
         });
     }, 500);
 }
@@ -1103,18 +532,18 @@ function shareReceipt() {
                     })
                     .then(() => {
                         hideLoading();
-                        showNotification(translations[currentLanguage].receiptShared);
+                        showNotification("Receipt shared successfully");
                     })
                     .catch(error => {
                         hideLoading();
-                        showNotification(translations[currentLanguage].errorSharing);
+                        showNotification("Error sharing receipt");
                         console.error("Error sharing receipt:", error);
                     });
                 });
             });
         }, 500);
     } else {
-        showNotification(translations[currentLanguage].sharingNotSupported);
+        showNotification("Sharing not supported on this device");
     }
 }
 
@@ -1174,7 +603,7 @@ function showNotification(message) {
 // Register service worker for PWA
 if ('serviceWorker' in navigator) {
     window.addEventListener('load', () => {
-        navigator.serviceWorker.register('./service-worker.js')
+        navigator.serviceWorker.register('./service-worker.js')  // Změněno na relativní cestu
             .then(registration => {
                 console.log('ServiceWorker registered: ', registration.scope);
             })

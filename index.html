@@ -10,18 +10,31 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <link rel="apple-touch-icon" href="icon-192x192.png">
+    <style>
+        /* Styly pro ruční zadávání množství */
+        .qty-input {
+            width: 40px;
+            text-align: center;
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+            padding: 5px;
+            font-size: 16px;
+            font-weight: 500;
+            -moz-appearance: textfield; /* Odstraní šipky v Firefoxu */
+        }
+        
+        .qty-input::-webkit-outer-spin-button,
+        .qty-input::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+    </style>
 </head>
 <body>
     <div class="container">
-        <!-- Language Switcher -->
-        <div class="language-switcher">
-            <button data-lang="cs" class="lang-btn">CS</button>
-            <button data-lang="en" class="lang-btn active">EN</button>
-        </div>
-
         <!-- Villa Selection Screen -->
         <div id="villaScreen" class="screen active">
-            <div class="header" data-lang-key="selectVilla">Select Villa</div>
+            <div class="header">Select Villa</div>
             <div class="villa-card" data-villa="little-castle">
                 <i class="fas fa-chess-rook"></i>
                 <div>The Little Castle</div>
@@ -41,17 +54,15 @@
             <div class="back-button" id="backToVilla">
                 <i class="fas fa-chevron-left"></i>
             </div>
-            <div class="header" data-lang-key="newOrder">New Order</div>
+            <div class="header">New Order</div>
             
             <div class="tab-bar">
-                <div class="tab active" data-category="drinks" data-lang-key="drinks">Drinks</div>
-                <div class="tab" data-category="services" data-lang-key="services">Services</div>
-                <div class="tab" data-category="gifts" data-lang-key="gifts">Gifts</div>
-                <div class="tab" data-category="custom" data-lang-key="custom">Custom</div>
+                <div class="tab active" data-category="drinks">Drinks</div>
+                <div class="tab" data-category="services">Services</div>
             </div>
             
             <div class="search-bar">
-                <input type="text" id="searchItems" data-lang-placeholder="searchItems" placeholder="Search items...">
+                <input type="text" id="searchItems" placeholder="Search items...">
                 <i class="fas fa-search"></i>
             </div>
 
@@ -187,31 +198,6 @@
                         <button class="increase-qty">+</button>
                     </div>
                 </div>
-                
-                <!-- New Beer Kegs Items -->
-                <div class="item-row" data-item="beer-keg-30">
-                    <div class="item-info">
-                        <div class="item-name">Beer Keg 30L</div>
-                        <div class="item-price">3000 CZK / 120 EUR</div>
-                    </div>
-                    <div class="item-quantity">
-                        <button class="decrease-qty">-</button>
-                        <input type="number" class="qty-input" value="0" min="0">
-                        <button class="increase-qty">+</button>
-                    </div>
-                </div>
-                
-                <div class="item-row" data-item="beer-keg-50">
-                    <div class="item-info">
-                        <div class="item-name">Beer Keg 50L</div>
-                        <div class="item-price">4375 CZK / 175 EUR</div>
-                    </div>
-                    <div class="item-quantity">
-                        <button class="decrease-qty">-</button>
-                        <input type="number" class="qty-input" value="0" min="0">
-                        <button class="increase-qty">+</button>
-                    </div>
-                </div>
             </div>
 
             <div id="servicesCategory" class="category-content" style="display: none;">
@@ -270,136 +256,21 @@
                     </div>
                 </div>
             </div>
-            
-            <!-- New Gift Category -->
-            <div id="giftsCategory" class="category-content" style="display: none;">
-                <div class="section-heading" data-lang-key="giftItems">Gift Items</div>
-                <p class="gift-info" data-lang-key="giftInfo">Items added here will be marked as gifts and won't be charged</p>
-                
-                <div class="item-row gift-item" data-item="gift-beer">
-                    <div class="item-info">
-                        <div class="item-name">Beer (Gift)</div>
-                        <div class="item-price">0 EUR (Free)</div>
-                    </div>
-                    <div class="item-quantity">
-                        <button class="decrease-qty">-</button>
-                        <input type="number" class="qty-input" value="0" min="0">
-                        <button class="increase-qty">+</button>
-                    </div>
-                </div>
-                
-                <div class="item-row gift-item" data-item="gift-prosecco">
-                    <div class="item-info">
-                        <div class="item-name">Prosecco (Gift)</div>
-                        <div class="item-price">0 EUR (Free)</div>
-                    </div>
-                    <div class="item-quantity">
-                        <button class="decrease-qty">-</button>
-                        <input type="number" class="qty-input" value="0" min="0">
-                        <button class="increase-qty">+</button>
-                    </div>
-                </div>
-                
-                <div class="item-row gift-item" data-item="gift-cocktail">
-                    <div class="item-info">
-                        <div class="item-name">Cocktail (Gift)</div>
-                        <div class="item-price">0 EUR (Free)</div>
-                    </div>
-                    <div class="item-quantity">
-                        <button class="decrease-qty">-</button>
-                        <input type="number" class="qty-input" value="0" min="0">
-                        <button class="increase-qty">+</button>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- New Custom Items Category -->
-            <div id="customCategory" class="category-content" style="display: none;">
-                <div class="section-heading" data-lang-key="customItems">Custom Items</div>
-                
-                <div class="custom-item-form">
-                    <input type="text" id="customItemName" data-lang-placeholder="itemName" placeholder="Item name">
-                    <input type="number" id="customItemPrice" min="0" step="0.01" data-lang-placeholder="itemPrice" placeholder="Price in EUR">
-                    <div class="custom-item-options">
-                        <label>
-                            <input type="checkbox" id="customItemGift">
-                            <span data-lang-key="markAsGift">Mark as gift</span>
-                        </label>
-                    </div>
-                    <button id="addCustomItem" class="btn" data-lang-key="addItem">Add Item</button>
-                </div>
-                
-                <div id="customItemsList">
-                    <!-- Custom items will be added here dynamically -->
-                </div>
-            </div>
-            
-            <!-- Discount Section -->
-            <div class="discount-section">
-                <div class="section-heading" data-lang-key="discounts">Discounts</div>
-                <div class="discount-options">
-                    <div class="discount-option">
-                        <input type="number" id="discountPercent" min="0" max="100" placeholder="%" data-lang-placeholder="discountPercent">
-                        <button id="applyPercentDiscount" class="btn secondary" data-lang-key="applyPercentDiscount">Apply %</button>
-                    </div>
-                    <div class="discount-option">
-                        <input type="number" id="discountAmount" min="0" step="0.01" placeholder="EUR" data-lang-placeholder="discountAmount">
-                        <button id="applyAmountDiscount" class="btn secondary" data-lang-key="applyAmountDiscount">Apply €</button>
-                    </div>
-                    <button id="removeDiscount" class="btn danger" data-lang-key="removeDiscount">Remove Discount</button>
-                </div>
-            </div>
 
-            <div class="order-summary-container">
-                <div class="order-summary">
-                    <div class="order-summary-left">
-                        <div class="order-summary-label" data-lang-key="totalItems">Total Items</div>
-                        <div id="totalItems">0</div>
-                    </div>
-                    <div class="order-summary-right">
-                        <div class="order-summary-label" data-lang-key="totalAmount">Total Amount</div>
-                        <div id="totalAmount">0.00 EUR</div>
-                    </div>
+            <div class="order-summary">
+                <div class="order-summary-left">
+                    <div class="order-summary-label">Total Items</div>
+                    <div id="totalItems">0</div>
                 </div>
-                
-                <!-- Gift Summary -->
-                <div class="order-summary gift-summary">
-                    <div class="order-summary-left">
-                        <div class="order-summary-label" data-lang-key="giftItems">Gift Items</div>
-                        <div id="totalGiftItems">0</div>
-                    </div>
-                    <div class="order-summary-right">
-                        <div class="order-summary-label" data-lang-key="giftValue">Gift Value</div>
-                        <div id="totalGiftAmount">0.00 EUR</div>
-                    </div>
-                </div>
-                
-                <!-- Discount Summary (visible only when discount applied) -->
-                <div class="order-summary discount-summary" style="display: none;">
-                    <div class="order-summary-left">
-                        <div class="order-summary-label" data-lang-key="discount">Discount</div>
-                        <div id="discountType">0%</div>
-                    </div>
-                    <div class="order-summary-right">
-                        <div class="order-summary-label" data-lang-key="discountValue">Discount Value</div>
-                        <div id="discountValue">0.00 EUR</div>
-                    </div>
-                </div>
-                
-                <!-- Final Total After Discount -->
-                <div class="order-summary final-total" style="display: none;">
-                    <div class="order-summary-left">
-                        <div class="order-summary-label" data-lang-key="finalTotal">Final Total</div>
-                    </div>
-                    <div class="order-summary-right">
-                        <div id="finalTotalAmount">0.00 EUR</div>
-                    </div>
+                <div class="order-summary-right">
+                    <div class="order-summary-label">Total Amount</div>
+                    <div id="totalAmount">0.00 EUR</div>
                 </div>
             </div>
 
             <div class="action-buttons">
-                <button id="proceedToPayment" class="btn" data-lang-key="proceedToPayment">Proceed to Payment</button>
-                <button id="clearOrder" class="btn secondary" data-lang-key="clearOrder">Clear Order</button>
+                <button id="proceedToPayment" class="btn">Proceed to Payment</button>
+                <button id="clearOrder" class="btn secondary">Clear Order</button>
             </div>
         </div>
 
@@ -408,128 +279,67 @@
             <div class="back-button" id="backToOrder">
                 <i class="fas fa-chevron-left"></i>
             </div>
-            <div class="header" data-lang-key="paymentMethod">Payment Method</div>
+            <div class="header">Payment Method</div>
             
             <div class="order-summary">
                 <div class="order-summary-left">
-                    <div class="order-summary-label" data-lang-key="totalItems">Total Items</div>
+                    <div class="order-summary-label">Total Items</div>
                     <div id="paymentTotalItems">0</div>
                 </div>
                 <div class="order-summary-right">
-                    <div class="order-summary-label" data-lang-key="totalAmount">Total Amount</div>
+                    <div class="order-summary-label">Total Amount</div>
                     <div id="paymentTotalAmount">0.00 EUR</div>
-                </div>
-            </div>
-            
-            <!-- Gift Summary in Payment -->
-            <div class="order-summary gift-summary">
-                <div class="order-summary-left">
-                    <div class="order-summary-label" data-lang-key="giftItems">Gift Items</div>
-                    <div id="paymentTotalGiftItems">0</div>
-                </div>
-                <div class="order-summary-right">
-                    <div class="order-summary-label" data-lang-key="giftValue">Gift Value</div>
-                    <div id="paymentTotalGiftAmount">0.00 EUR</div>
-                </div>
-            </div>
-            
-            <!-- Discount Summary in Payment -->
-            <div class="order-summary discount-summary" style="display: none;">
-                <div class="order-summary-left">
-                    <div class="order-summary-label" data-lang-key="discount">Discount</div>
-                    <div id="paymentDiscountType">0%</div>
-                </div>
-                <div class="order-summary-right">
-                    <div class="order-summary-label" data-lang-key="discountValue">Discount Value</div>
-                    <div id="paymentDiscountValue">0.00 EUR</div>
-                </div>
-            </div>
-            
-            <!-- Final Total After Discount in Payment -->
-            <div class="order-summary final-total" style="display: none;">
-                <div class="order-summary-left">
-                    <div class="order-summary-label" data-lang-key="finalTotal">Final Total</div>
-                </div>
-                <div class="order-summary-right">
-                    <div id="paymentFinalTotalAmount">0.00 EUR</div>
                 </div>
             </div>
             
             <div class="payment-option" data-payment="cash">
                 <i class="fas fa-money-bill-wave"></i>
                 <div class="payment-option-info">
-                    <div data-lang-key="cash">Cash</div>
-                    <div class="item-price" data-lang-key="cashDescription">Pay with cash</div>
+                    <div>Cash</div>
+                    <div class="item-price">Pay with cash</div>
                 </div>
             </div>
             
             <div class="payment-option" data-payment="card">
                 <i class="fas fa-credit-card"></i>
                 <div class="payment-option-info">
-                    <div data-lang-key="card">Card</div>
-                    <div class="item-price" data-lang-key="cardDescription">Pay with credit/debit card</div>
+                    <div>Card</div>
+                    <div class="item-price">Pay with credit/debit card</div>
                 </div>
             </div>
             
             <div class="payment-option" data-payment="unpaid">
                 <i class="fas fa-clock"></i>
                 <div class="payment-option-info">
-                    <div data-lang-key="unpaid">Unpaid</div>
-                    <div class="item-price" data-lang-key="unpaidDescription">Mark as unpaid (pay later)</div>
+                    <div>Unpaid</div>
+                    <div class="item-price">Mark as unpaid (pay later)</div>
                 </div>
             </div>
             
             <div class="action-buttons">
-                <button id="completeOrder" class="btn success" data-lang-key="completeOrder">Complete Order</button>
-                <button id="cancelPayment" class="btn secondary" data-lang-key="cancel">Cancel</button>
+                <button id="completeOrder" class="btn success">Complete Order</button>
+                <button id="cancelPayment" class="btn secondary">Cancel</button>
             </div>
         </div>
 
         <!-- Receipt Screen -->
         <div id="receiptScreen" class="screen">
-            <div class="header" data-lang-key="orderCompleted">Order Completed</div>
+            <div class="header">Order Completed</div>
             
             <div class="receipt" id="receiptContent">
                 <div class="receipt-header">
-                    <div class="receipt-title" data-lang-key="receipt">RECEIPT</div>
+                    <div class="receipt-title">RECEIPT</div>
                     <div class="receipt-villa" id="receiptVilla">Villa Name</div>
                     <div class="receipt-date" id="receiptDate">Date and Time</div>
                 </div>
                 
-                <!-- Paid Items -->
-                <div class="receipt-section">
-                    <div class="receipt-section-title" data-lang-key="paidItems">Paid Items</div>
-                    <div class="receipt-items" id="receiptPaidItems">
-                        <!-- Paid items will be inserted here dynamically -->
-                    </div>
-                    
-                    <!-- Discount in Receipt if applied -->
-                    <div class="receipt-discount" id="receiptDiscount" style="display: none;">
-                        <div class="receipt-item">
-                            <div class="receipt-item-left">
-                                <div class="receipt-item-name" data-lang-key="discount">Discount</div>
-                                <div class="receipt-item-qty" id="receiptDiscountType">10%</div>
-                            </div>
-                            <div class="receipt-item-price" id="receiptDiscountValue">-10.00 EUR</div>
-                        </div>
-                    </div>
-                    
-                    <div class="receipt-total">
-                        <div data-lang-key="total">Total</div>
-                        <div id="receiptPaidTotal">0.00 EUR</div>
-                    </div>
+                <div class="receipt-items" id="receiptItems">
+                    <!-- Receipt items will be inserted here dynamically -->
                 </div>
                 
-                <!-- Gift Items -->
-                <div class="receipt-section gift-section" id="receiptGiftSection" style="display: none;">
-                    <div class="receipt-section-title" data-lang-key="giftItems">Gift Items</div>
-                    <div class="receipt-items" id="receiptGiftItems">
-                        <!-- Gift items will be inserted here dynamically -->
-                    </div>
-                    <div class="receipt-total gift-total">
-                        <div data-lang-key="giftValue">Gift Value</div>
-                        <div id="receiptGiftTotal">0.00 EUR</div>
-                    </div>
+                <div class="receipt-total">
+                    <div>Total</div>
+                    <div id="receiptTotal">0.00 EUR</div>
                 </div>
                 
                 <div class="receipt-payment" id="receiptPayment">
@@ -539,32 +349,32 @@
             
             <div class="action-buttons">
                 <button id="shareReceipt" class="btn">
-                    <i class="fas fa-share-alt"></i> <span data-lang-key="shareReceipt">Share Receipt</span>
+                    <i class="fas fa-share-alt"></i> Share Receipt
                 </button>
                 <button id="saveReceipt" class="btn secondary">
-                    <i class="fas fa-download"></i> <span data-lang-key="saveAsPDF">Save as PDF</span>
+                    <i class="fas fa-download"></i> Save as PDF
                 </button>
                 <button id="newOrder" class="btn success">
-                    <i class="fas fa-plus"></i> <span data-lang-key="newOrder">New Order</span>
+                    <i class="fas fa-plus"></i> New Order
                 </button>
             </div>
         </div>
 
         <!-- History Screen -->
         <div id="historyScreen" class="screen">
-            <div class="header" data-lang-key="orderHistory">Order History</div>
+            <div class="header">Order History</div>
             
             <div id="orderHistory">
                 <!-- Order history will be populated dynamically -->
                 <div class="empty-state">
                     <i class="fas fa-history"></i>
-                    <div data-lang-key="noOrders">No orders yet</div>
+                    <div>No orders yet</div>
                 </div>
             </div>
             
             <div class="action-buttons">
-                <button id="clearHistory" class="btn danger" data-lang-key="clearHistory">Clear History</button>
-                <button id="backToMain" class="btn secondary" data-lang-key="backToMain">Back to Main</button>
+                <button id="clearHistory" class="btn danger">Clear History</button>
+                <button id="backToMain" class="btn secondary">Back to Main</button>
             </div>
         </div>
     </div>
@@ -572,7 +382,7 @@
     <!-- Loading indicator -->
     <div class="loading" style="display: none;">
         <div class="loading-spinner"></div>
-        <div data-lang-key="processing">Processing...</div>
+        <div>Processing...</div>
     </div>
 
     <!-- Notification -->
